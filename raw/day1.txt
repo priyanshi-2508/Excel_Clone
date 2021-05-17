@@ -1,0 +1,48 @@
+1st step -> To design the layout of web page..We made 4 containers named menu,formula,grid and last is sheets container.
+Now style them by providing background-color or border to identify containers very easily..
+******Div ko by default height nhii milti ... isliye we give div block some height..
+**box-sizing : border-box is important to do as it  allows us to include the padding and border in an element's total width and height.**
+**Grid container must always have remaining part..ans hence use Calc here. **
+******Calc is very important to give it remaining height/width..
+
+
+2nd step -> Let's design sheets container first..
+It will contain sheet-btn and sheet-list.
+Sheet-list will contain sheets.Now, add CsS to both containers and also diplay:flex to their parent container
+
+3rd step -> JS on sheet container
+Use idx as an attribute at sheet 1 to make more sheet.Here we will find idx of last sheet and we will update content and textof new sheet using idx.
+To convert value in string... We can use backticks and $ sybmol to print value of variable...e.g.->`${idx+1}}`
+and then add new sheet to sheetList. We need to make new sheet active, do it by using active class to new sheet and remove it from all other sheets..
+So, now find allSheets and remove active class from last visited sheet.
+and Now, every new Sheet must have eventListener so that we can call handleSheet() and then we will find allSheets again and will make active to this newsheet and remove it from all other classes..
+Ye code tab chlega jb kisi old sheet pr click hoga..
+
+***Sheet 1 pr eventListener add krdo start mein***
+find first sheet using document.querySelector and again handle it using handleSheet..
+And handleSheet will contain e.target which contain sheet.
+jis pr bhi app eventListener add krte ho vo apka currentTarget hota hai..
+Check out memory diagram for more understanding..
+
+Now hide scrollbar bur hide scroll for sheetList
+sheet pr min-width di kyuki parent display:flex usse overflow hua...vo hamne manage kiya using overflow:auto
+
+4th step -> Implement grid..
+Check out grid-container html..
+Now make a new file named grid.JS
+find leftCol and make 100 div and counting from 1-100. Apply for loop to do the same..
+Make new div colBox and then add its innerHTML and append it to leftCol.
+Now, provide some CSS to elements of grid-container.
+
+Now, we will have some technical issues.1st is top_row and grid ko bhi maintian krni hai..ki uski height kyuu nii dikh rhi hai..
+Make cols also...Equal to 26 using JS..again use the same for loop to make it and do the same what we did for leftCol.
+
+Now design grid.we will have multiple rows which will contain multiple cells..
+JS se Implement kro grid ko rather than HTML..
+Run a loop of rows and inner loop for columns and make div and set its attribute and innerText..
+And then append rows in grid..dont give height to grid due to overflow issue.
+
+
+
+
+

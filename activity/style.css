@@ -1,0 +1,171 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin: 0px;
+}
+/* Menu Container */
+.menu-container{
+    /* border: 1px solid red; */
+    height: 4rem;
+    background-color: aqua;
+    align-items: center;
+    display: flex;
+    gap:0.5rem;
+    padding-left:0.5rem;
+
+}
+
+.menu-container>*{
+    border: 1px solid;
+    height:60%;
+}
+.font-size{
+    width:5%;
+}
+.font-family{
+    width:21%;
+}
+.bui-container{
+    width:21%;
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+}
+.bui-container>*{
+    width:30%;
+    height:80%;
+    text-align: center;
+}
+.align-container{
+    width:14%;
+}
+.color-container{
+    width:10%;
+}
+
+
+/* Formula Container */
+.formula-container{
+    /* border: 1px solid red; */
+    height: 2rem;
+    /* background-color: chocolate; */
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.formula-container >*{
+    height: 70%;
+}
+.address-input{
+    width: 4rem;
+}
+.formula-input{
+    width : calc(100vw - 6rem);
+}
+
+
+/* Grid Container */
+.grid-container{
+    /* border: 1px solid red; */
+    height: calc(100vh - ( 4rem + 2rem + 2rem ));
+    background-color: greenyellow;
+    overflow: auto;
+    position: relative;
+}
+.box{
+    height: 2rem;
+    width: 2rem;
+    border: 1px solid;
+    text-align: center;
+}
+
+.left_box{
+    background-color: rgb(58, 62, 67);
+}
+.top_row{
+    left: 2rem;
+    top:0rem;
+    height: 2rem;
+    background-color: darkgreen;
+    display: flex;
+    position: absolute;
+    
+}
+.grid{
+    /* height: 2rem; */
+    /* background-color: lightskyblue; */
+    left: 2rem;
+    top: 2rem;
+    position: absolute;
+}
+.cell{
+    border: 1px solid;
+    min-width: 4rem;
+    text-align: center;
+    height: 2rem;
+}
+.row{
+    display: flex;
+}
+
+
+
+
+
+/* Sheet Container */
+.sheets-container{
+    background-color: crimson;
+    height: 2rem;
+    display: flex;
+}
+.add-sheet_btn-container{
+    width: 3rem;
+    border: 1px solid;
+    height: 100%;
+    padding-top: 0.2rem;
+    padding-left: 0.3rem;
+}
+
+.sheet-list{
+    width: calc(100vw - 3rem);
+    border : 1px solid;
+    display: flex;
+    overflow: auto;
+}
+/* Remove scroll from sheet list */
+.sheet-list::-webkit-scrollbar {
+    display: none;
+}
+.sheet-list{
+    -ms-overflow-style: none;
+    scrollbar-width: unset;
+}
+
+.sheet{
+    min-width: 5rem;
+    border: 1px solid blue;
+    height:100%;
+    background-color: deeppink;
+}
+
+.active{
+    background-color: lightpink;
+}
+
+
+.box{
+    height: 2rem;
+    width: 2rem;
+    border: 1px solid;
+    text-align: center;
+}
+.active-btn{
+    background-color:red;
+}
+
+/* new open save */
+.nos-container>*{
+    border:none;
+}

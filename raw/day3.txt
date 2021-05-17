@@ -1,0 +1,18 @@
+task1 -> align-container working.. in grid.js file
+find align-container using document.querySelector..
+as we have 3 btns
+so loop for 1 -3 and add addEventListener for click..Now change their alignment by finding UICellElement() and set its value to recent clicked alignment value..
+Find that by getAttribute("class");
+
+********Select element k liye event jo hota hai "change"********
+now, do for font-size element.. so use change event..
+find UICellElement() and change its fontSize property.
+***By default value set krne k liye we can use selected keyword..***
+
+2nd task -> 2-way binding..
+we can set active-btn class so that we can find which is active which is not..
+
+
+
+
+

@@ -1,0 +1,47 @@
+1st task -> Set position of grid..
+We can't use flex because setting of grid cant be done..kyuki jo hmara box h..uske movement m issues aa rhe h.
+Now, try to do with position : relative,fixed,absolute
+Top_Row ko position : relative and some left, but this will have issue taht it will leave some space at original place.
+Now, give it absolute position, ***Absolute use krne k liye, uske parent[grid-container] ko relative dedo.***
+
+Grid ko position absolute dedo and top bhi dedo..So, it will go at its position..
+
+2nd task -> Formula implemenation k liye formula chahiye with address too..
+Input is *Inline Block*. Make formula-container as display flex and adjust their child acc to that..
+Also set CSS of both address-input and formula-input too.. i.e., set width height.
+
+Now, we want address of cell at address-input box..
+so, we will do it by JS
+Code tab likhna jb grid ban gya hoga... Mtlb uske baad let krke aage chlna
+allCells nikal lo...using .grid.cell k through
+and uspr addEventListener lgado.. and find address usinf row and col value...
+and use address-input mein insert krdo..
+
+Now, we have one more bug.. That address-input must always contain A1 at its default value..
+So click first cell using..allCells[0].click(); 
+
+Now, if we want to make div editable, use contenteditable class
+
+3rd task -> Edit menu-container and add all styling for cell
+_____Read Input tags from W3schools_____
+Write html for font-size, font-family,bui-container,align-container,color-container
+Set some CSS which include..height width alignment margin or justify-content..Set some content in html and display:flex..
+**** GAP is a property to create gap between two elements****
+Gap works in both horizontal and vertical..
+****Select tag has option attribute and value bhi hota hai****
+Option has an "value" attribute
+Add fonts too..
+Now add addEventListener to every individual container for styling..
+Address-input se value nikal lo and convert its address to rid and cid..
+So make function getRIDandCID
+and we will get objec from thus function.
+Now, address woill help to give you current click cell address..
+
+Now search element using document.querySelector to find cell
+we will find UICell
+and now change its style to what is choosed..For eg. addEventListener on bold will change bold value of the text..
+
+And make it work for italic and underline too
+
+
+
