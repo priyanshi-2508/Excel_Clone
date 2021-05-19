@@ -1,0 +1,93 @@
+***When we click on cell, the identifier we use to get is rid/cid of UI and we get address through through address-input, 
+then we go to DB k cell ki rid/cid through address and then we update in DB and then again through this we find address and again update it to UI***
+**UI ki rid/cid is same as DB k cell ki rid/cid.**
+
+1st task -> Implement formula :-
+Constraints of formula- 1. Columns - A-Z and rows - 1-100
+2. formula can only be set through formula_box.
+3. Formula k andr tokens saare space separated honge..[ to make parsing easy]
+[We wont identify through =, we can identify if we want.]
+
+How formula work? and cases in formula ? 
+Value for o/p cell will be calculated only through formula box.
+If we change any o/p value, then the cell on which o/p value is dependent will also change.
+And that cell value will not affect on which the o/p is directly depend.
+
+**Formula should always hold throughout sheet**
+Case1 - a1 and a2 and b1 address box, formula_box contains =(a1+a2)
+toh, ham address block k thriugh value set krte hai.
+Case2 - If we change a1, then b1 and c1 will change on it's own.
+Case3 - Let's say if we have A1+A2 as o/p of B1, and C1 = 2*B1 => on changing B1, on UI c1 will change but not a1 and a2.
+And also, if we set value[type krdi..mtln formula se value nhi le rhe ho..mtlb ki formula ab kaam nii krega.] of b1, toh formula remove hojayega b1 se..aur a1 and a2 m change nii hoga..
+
+Input k 2 ways => either through cell or through formula_box
+and also can be possible to set or update formula on formula_box
+Cell mein formula se update kr rhe ho yaa khud se set kr rhe ho..
+
+Implementing Case 1 -
+1. formula box pr addEventListener
+2. Enter krne pr -> get formula
+3. Evaluate formula -> value
+4. Get cell address from address_box and update it on UI as well as in Db.
+5. DB mein formula and value aur add krnge for individual cell..
+
+So, add value and formula in sheetDB. and make formula.js
+We have 2 types of addEventListener :- blur and focus
+blur -> Blur us cell pr hoga jis cell p vo pehla tha..
+focus -> Jispr click krte ho vo focus mein aajata hai..and picchle vale cell pr blur aajata hai..
+
+Blur ka major use case ye hai ki ham ye manenge ki hamne entry update krdi...Data update krdiyaa
+Cells k andr blur call hoga, when you will update UI data.
+
+//save user entered value into db for further use
+so addEventListener to allCells[i] and uska innerText get krlo.. then UI se address lakr dega apna using getRid&cid function
+aur address ham utha lenge through address_box ki value se i.e. addressInput.value
+and now, sheetDB k rid and cid mein value save krdo jo UI se aayi.. i.e. data of innerText
+
+Now, writing code for Case1 :- 
+formulaBar pr addEventListener event hoga "keydown" , so agr hame e.key == "Enter" mila
+then we will find formula from value of formulaBar.
+and now we will evaluateFormula using function.
+and then ham setCell pr kaam krvaynge ki vo value and formula set krde..
+
+function setCell -> Will update UI and DB. It will findUICellElemnt and ham uski value nikal lenge and phir address  nikal lenge using getRid&Cid seaur value db mein store krva lenge..
+function evaluateFormula -> ye function ( a1 + a2 ) ko ( 10 + 20 ) tak lekr aayega..
+so, split on basis of space and we will receive an array from that..
+we need to find operators and operand from this array..using ASCII character identify krlo.. then a1 ko uski value se replace krdo.. and same for other one..
+ascii >=65 && ascii <=90 is an valid operand
+and then getRid&Cid from function and value get krlo from sheetDB[rid][cid].
+and now us value ko array mein update krdo..
+.. now again join on basis of sapce and now give evaluated Formula to eval(evaluatedFormula).
+eval is inbuilt function..
+**Join function converts array of string into string**
+adrdress nikalne ki jagah rid and cid nikalo..kyuki blur last pr kaam krta hai..bur address_box new box ka address dega..
+pr apna code kyuu chl rha hota hai, it's cuz, jab event call hota hai blur, tab pehle vali value rhti hai address_box mein..
+[Blur tab hoga jb aap agle vale pr click kroge..][Concept of bubbling]
+***Mouse press krke release kiya hai is an click event..*** Mtlb focus, then click then blur
+
+
+Case 2 implentation :- 
+Add yourself to parent first..
+1. Cell blur event -> Cell change hua then reEcaluate kro formulae ko and children ko bolo ki value update kro on both UI ans sheetDB.
+and if aap bhi change hue toh aapke children ko bhi boldiya ki uske children ko update krdo..
+
+How you will get to know who's dependent on a cell ? 
+ Parent k pass children ka array rkhlo..Isse dependency pta chl jayegi..
+lets say a1 =10 & a2 =20 => b1 = (a1+a2) & c1 = 2*b1
+So, a1 mein children array hoga which will contain b1 and same for b2..
+and b1 k children mein c1 aayega..
+Recursive call se implement hoga..
+
+Now add children array in sheetDB. and setParentChildrenArray bhi krva lo formulaBar pr keydown hone pr..
+is function mein bs value replace krne ki jagah parentobj k cgildren pr chaddress ko push krva denge..
+[ye hamne pehle code mein hi edit kiya hai...so that value store hoti jaye.]
+
+Implement case2 code - cellobj le aao and usme data update krdo..
+updateChildren(cellObject) call krlo...ye function children ki value update krke de dega..
+SO, basically ham phir se child obj ka address nikalnge and phir se value aajayegi... aur phir is value ko cell mein set krdo..Using setCell..
+and then call function again..
+
+*****************Error :- findUICellElemnt hame abhi vale element ka address mhii de rha hai.. isliye hamne naya function bnaya named setChildrenCell and usko hamne call kiya updateChildren function mein..*****************
+
+
+

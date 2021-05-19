@@ -29,7 +29,13 @@ open.addEventListener("change", function () {
     // read as text 
     fr.readAsText(fileObj);
     fr.onload = function () {
+        // 3 darray
         console.log(fr.result);
+        // sheet array 
+        let sheetArray = fr.result;
+        sheetDB = sheetArray[0];
+        // first sheet db get 
+        // setUi call
     }
     fr.addEventListener("load", function () {
         console.log(fr.result);

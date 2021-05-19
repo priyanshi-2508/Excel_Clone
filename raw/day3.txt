@@ -9,10 +9,61 @@ now, do for font-size element.. so use change event..
 find UICellElement() and change its fontSize property.
 ***By default value set krne k liye we can use selected keyword..***
 
-2nd task -> 2-way binding..
+2nd task -> Multiple grid and object
+We also need to implement multiple sheets...To save data in sheets rather than making new grid always for new sheet, we will make a newObject for cell.
+Every cell willl have it's object.... First option is to make attrribute for every cell.
+Second is object. 2D array to  represnts a grid. And an object to represent a cell.
+lets have a sheetDB arr, and now to represent every cell, we will add some properties used in 2D grid.
+And hence, ye cell hmesha sync rhega UI cell se..
+
+
+3rd task -> 2-way binding..
 we can set active-btn class so that we can find which is active which is not..
+Formatting on UI will exist..
+So, while clicking in cell, if we click on bold, then we used to add actice-btn class..
 
+Now, in allCells, find cellObject. and if lets say cellObject.bold == "bold, then remove that class from bold btn..
+UI par bhi change krna hai , state pr bhi..Check in bold addEventListener and also in allCells loop.
+and then do the same for underline, italic, font-size etc.
 
+4th task -< New, download , save and open feature
+
+So add value property in sheetDB
+
+Questions :- Cookies,Session Storage,Local Storage , IndexedDB
+Cookies, SessionStorage and Local Storage -> all 3 are client side Storage
+WE will get them at browser.
+Local Storage -> Its separate for different URL. Upper bound size is 5MB. It is a permanent storage => closing tab wont affect its storage
+Session Storage -> not permanent, session is for browser tab. eg :- WhatsApp.
+[Read more from developer.mozilla.mdn] It's unique for each tab.
+Duplicate tab ki same session storage hoti hai..No issue on refresh.
+It is only removed when tab/browser is closed.
+
+cookies -> It is the very first thing came. Cookies k andr save hota hai data
+they can track us using cookies.
+Client request to server and it give response. Browser sends cookies with request and take cookies with response.
+
+Http onlu cookies  -> They can not be changed..
+
+//Now new. open and download feature
+Set icons using font awesome or google fonts anddeign html
+
+make a new file newOpenSave.js
+let save = document.querySelector(".save");
+Do this.. Read htmldom.dev/download-a-file for more details
+
+We will use 2D array and we will stringify it 
+and convert it to blob and add download attribute..
+****Top js file k saare element/variable/function nicche mil jaynge hmesha****
+
+How to open a file in browser using dom ? 
+
+So, for that we will take input in html as file.
+open pr change event call hota hai..
+    open.files naam ka attribute hai.. Usko fileList m store krva lo and console.krlo..
+For more details, go at developer.mozilla.org Site
+also, how to get file and read it on browser ?
+Read content of a text file in browser ?[GeeksforGeeks]
 
 
 

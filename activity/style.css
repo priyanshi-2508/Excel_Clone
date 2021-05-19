@@ -70,7 +70,7 @@ body{
 .grid-container{
     /* border: 1px solid red; */
     height: calc(100vh - ( 4rem + 2rem + 2rem ));
-    background-color: greenyellow;
+    background-color: rgb(191, 238, 120);
     overflow: auto;
     position: relative;
 }
@@ -82,13 +82,13 @@ body{
 }
 
 .left_box{
-    background-color: rgb(58, 62, 67);
+    background-color: rgb(120, 128, 138);
 }
 .top_row{
     left: 2rem;
     top:0rem;
     height: 2rem;
-    background-color: darkgreen;
+    background-color: rgb(10, 107, 10);
     display: flex;
     position: absolute;
     
